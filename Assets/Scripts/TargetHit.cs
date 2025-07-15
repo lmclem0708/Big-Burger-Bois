@@ -3,7 +3,7 @@ using UnityEngine;
 public class TargetHit : MonoBehaviour
 {
     [Header("Lifetime Settings")]
-    public float maxLifetime = 3f;
+    public float maxLifetime = 5f;
 
     private float lifeTimer;
     private GameManager gm;
@@ -17,10 +17,9 @@ public class TargetHit : MonoBehaviour
     void Update()
     {
         lifeTimer -= Time.deltaTime;
-        if (lifeTimer <= 0f)
+        if (lifeTimer < 0)
         {
-            gm.Miss();
-            Destroy(gameObject);
+            lifeTimer = 5f;
         }
     }
 
@@ -30,6 +29,13 @@ public class TargetHit : MonoBehaviour
         {
             gm.Hit();
             Destroy(gameObject);
+        } else 
+            {
+            Debug.Log("test");
+            gm.Miss();
+            Destroy(gameObject);
+            
         }
+        
     }
 }

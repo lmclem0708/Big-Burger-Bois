@@ -36,7 +36,11 @@ public class GameManager : MonoBehaviour
         lives--;
         ShowResult("Miss!");
         UpdateUI();
-        if (lives <= 0) Lose();
+        if (lives <= 0)
+        {
+            Lose();
+        }
+        
     }
 
     void UpdateUI()
