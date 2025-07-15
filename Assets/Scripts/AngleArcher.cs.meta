@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 086b3cd745af6d64bba8063c88057e51
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - burgerSpawnPoint: {fileID: 1640439798477179723, guid: e753a885e7db2fe42b30d29e1adf550e, type: 3}
+  - burgerPrefab: {fileID: 94949909683609070, guid: 7f8255827dd786c4ca2415d264a38f78, type: 3}
+  - powerSlider: {fileID: 8582996634330659273, guid: 649bb681e350ab1438680fdba90dc9b0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
