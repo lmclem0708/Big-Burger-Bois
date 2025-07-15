@@ -1,13 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Gameplay")]
     public int score = 0;
     public int lives = 5;
-    public int pointsPerHit = 5;
+    public int pointsPerHit = 50;
     public int pointsToWin = 100;
+    public GameObject loss;
+    public GameObject win;
+    public GameObject player;
+    public GameObject customer;
 
     [Header("UI")]
     public Text scoreText;
@@ -23,9 +28,22 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
+    private void Update()
+    {   
+        if (lives <=0)
+        {
+            lives = 0;
+            Lose();
+        }
+
+        if (score == 100)
+        {
+            Win();
+        }
+    }
     public void Hit()
     {
-        score += pointsPerHit;
+        score += 50;
         ShowResult("Hit!");
         UpdateUI();
         if (score >= pointsToWin) Win();
@@ -38,6 +56,7 @@ public class GameManager : MonoBehaviour
         UpdateUI();
         if (lives <= 0)
         {
+            lives = 0;
             Lose();
         }
         
@@ -56,6 +75,10 @@ public class GameManager : MonoBehaviour
 
     void Win()
     {
+        Time.timeScale = 0;
+        win.SetActive(true);
+        player.SetActive(false);
+        customer.SetActive(false);
         ShowResult("You win!");
         if (explosionPrefab != null && target != null)
             Instantiate(explosionPrefab, target.position, Quaternion.identity);
@@ -66,7 +89,11 @@ public class GameManager : MonoBehaviour
 
     void Lose()
     {
-        ShowResult("You're fired!");
-        // FindObjectOfType<AngleArcher>().enabled = false;
+        player.SetActive(false);
+        customer.SetActive(false);
+        Time.timeScale = 0;
+            loss.SetActive(true);
+            ShowResult("You're fired!");
+               // FindObjectOfType<AngleArcher>().enabled = false;
     }
 }

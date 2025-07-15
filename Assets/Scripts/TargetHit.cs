@@ -36,6 +36,12 @@ public class TargetHit : MonoBehaviour
             Destroy(gameObject);
             
         }
-        
+
+        if (col.gameObject.name.Contains("border"))
+        {
+            Debug.Log("test");
+            gm.Miss();
+            Destroy(gameObject);
+        }
     }
 }
